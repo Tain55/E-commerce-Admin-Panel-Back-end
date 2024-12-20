@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name'); 
             $table->text('description')->nullable(); 
             $table->decimal('price', 10, 2); 
+            $table->decimal('oldPrice', 10, 2)->nullable()->change();
             $table->integer('quantity')->default(0); 
             $table->string('sku')->unique(); 
             $table->unsignedBigInteger('category_id'); 
@@ -23,7 +24,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true); 
             $table->timestamps(); 
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
